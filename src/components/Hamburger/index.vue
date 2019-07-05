@@ -14,6 +14,10 @@
 </template>
 
 <script>
+/**
+ * By shenq
+ * 导航菜单开关，用于左侧菜单的开关
+ */
 export default {
   name: 'Hamburger',
   props: {

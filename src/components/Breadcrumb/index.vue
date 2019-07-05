@@ -10,6 +10,10 @@
 </template>
 
 <script>
+/**
+ * By shenq
+ * 多级面包屑，通过noRedirect来判断展示是否可以点击
+ */
 import pathToRegexp from 'path-to-regexp'
 
 export default {
