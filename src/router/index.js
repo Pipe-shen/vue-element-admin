@@ -9,7 +9,7 @@ import Layout from '@/layout'
 /* Router Modules */
 import constantRoutes from './modules/constant'
 
-import iconRouter from './modules/icon'
+/* import iconRouter from './modules/icon'
 import tabRouter from './modules/tab'
 import excelRouter from './modules/excel'
 import zipRouter from './modules/zip'
@@ -20,7 +20,7 @@ import clipboardRouter from './modules/clipboard'
 import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
-import nestedRouter from './modules/nested'
+import nestedRouter from './modules/nested' */
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -89,50 +89,6 @@ export const asyncRoutes = [
       }
     ]
   },
-  /** when your routing map is too long, you can split it into small modules **/
-  iconRouter,
-  tabRouter,
-  excelRouter,
-  zipRouter,
-  pdfRouter,
-  themeRouter,
-  componentsRouter,
-  chartsRouter,
-  nestedRouter,
-  tableRouter,
-  clipboardRouter,
-  externalRouter,
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/list',
-    name: 'Example',
-    meta: {
-      title: 'Example',
-      icon: 'example'
-    },
-    children: [
-      {
-        path: 'create',
-        component: () => import('@/views/example/create'),
-        name: 'CreateArticle',
-        meta: { title: 'Create Article', icon: 'edit' }
-      },
-      {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/example/edit'),
-        name: 'EditArticle',
-        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
-        hidden: true
-      },
-      {
-        path: 'list',
-        component: () => import('@/views/example/list'),
-        name: 'ArticleList',
-        meta: { title: 'Article List', icon: 'list' }
-      }
-    ]
-  },
   {
     path: '/error',
     component: Layout,
@@ -170,6 +126,67 @@ export const asyncRoutes = [
       }
     ]
   },
+
+  /** when your routing map is too long, you can split it into small modules **/
+  /* {
+    path: '/demo',
+    component: Layout,
+    redirect: '/demo/icons',
+    alwaysShow: true, // will always show the root menu
+    name: 'Demo',
+    meta: {
+      title: 'Demo',
+      icon: 'lock',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      iconRouter
+    ]
+  },
+  iconRouter,
+  tabRouter,
+  excelRouter,
+  zipRouter,
+  pdfRouter,
+  themeRouter,
+  componentsRouter,
+  chartsRouter,
+  nestedRouter,
+  tableRouter,
+  clipboardRouter,
+  externalRouter, */
+  {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/list',
+    name: 'Example',
+    meta: {
+      title: 'Example',
+      icon: 'example'
+    },
+    children: [
+      {
+        path: 'create',
+        component: () => import('@/views/example/create'),
+        name: 'CreateArticle',
+        meta: { title: 'Create Article', icon: 'edit' }
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/example/edit'),
+        name: 'EditArticle',
+        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/example/list'),
+        name: 'ArticleList',
+        meta: { title: 'Article List', icon: 'list' }
+      }
+    ]
+  },
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
