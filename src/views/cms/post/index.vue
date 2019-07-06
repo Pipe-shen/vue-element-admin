@@ -61,7 +61,7 @@ import { fetchList } from '@/api/article'
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 
 export default {
-  name: 'ArticleList',
+  name: 'Post',
   components: { Pagination },
   filters: {
     statusFilter(status) {
