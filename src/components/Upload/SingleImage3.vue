@@ -92,16 +92,13 @@ export default {
   position: relative;
   @include clearfix;
   .image-uploader {
-    width: 35%;
-    float: left;
+    /*width: 35%;*/
   }
   .image-preview {
     width: 200px;
     height: 200px;
     position: relative;
     border: 1px dashed #d9d9d9;
-    float: left;
-    margin-left: 50px;
     .image-preview-wrapper {
       position: relative;
       width: 100%;
@@ -142,8 +139,6 @@ export default {
     height: 180px;
     position: relative;
     border: 1px dashed #d9d9d9;
-    float: left;
-    margin-left: 50px;
     .app-fake-conver {
       height: 44px;
       position: absolute;

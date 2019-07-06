@@ -124,7 +124,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .components-container div {
   margin: 10px;
 }

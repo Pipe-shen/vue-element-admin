@@ -1,18 +1,18 @@
 <template>
-  <div class="createPost-container">
+  <div class="app-container">
+    <sticky :z-index="10" :class-name="'sub-navbar '+postForm.status" style="margin: -20px -20px 0 -20px;">
+      <CommentDropdown v-model="postForm.comment_disabled" />
+      <PlatformDropdown v-model="postForm.platforms" />
+      <SourceUrlDropdown v-model="postForm.source_uri" />
+      <el-button
+        v-loading="loading"
+        style="margin-left: 10px;"
+        type="success"
+        @click="submitForm"
+      >Publish</el-button>
+      <el-button v-loading="loading" type="warning" @click="draftForm">Draft</el-button>
+    </sticky>
     <el-form ref="postForm" label-position="top" :model="postForm" :rules="rules" class="form-container">
-      <sticky :z-index="10" :class-name="'sub-navbar '+postForm.status">
-        <CommentDropdown v-model="postForm.comment_disabled" />
-        <PlatformDropdown v-model="postForm.platforms" />
-        <SourceUrlDropdown v-model="postForm.source_uri" />
-        <el-button
-          v-loading="loading"
-          style="margin-left: 10px;"
-          type="success"
-          @click="submitForm"
-        >Publish</el-button>
-        <el-button v-loading="loading" type="warning" @click="draftForm">Draft</el-button>
-      </sticky>
 
       <div class="createPost-main-container">
         <el-row :gutter="20">
@@ -63,17 +63,14 @@
               <MDinput v-model="postForm.title" :maxlength="100" name="name" required>Title</MDinput>
             </el-form-item> -->
 
-            <div class="postInfo-container" />
-            <el-form-item style="margin-bottom: 40px;" label-width="70px" label="Summary:">
+            <el-form-item label="Summary:">
               <el-input
                 v-model="postForm.content_short"
-                :rows="1"
+                rows="3"
                 type="textarea"
-                class="article-textarea"
-                autosize
                 placeholder="Please enter the content"
               />
-              <span v-show="contentShortLength" class="word-counter">{{ contentShortLength }}words</span>
+              <!--              <span v-show="contentShortLength" class="word-counter">{{ contentShortLength }}words</span>-->
             </el-form-item>
 
             <el-form-item prop="content" style="margin-bottom: 30px;">
@@ -81,7 +78,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item prop="image_uri" style="margin-bottom: 30px;">
+            <el-form-item prop="image_uri" label="Thum:">
               <Upload v-model="postForm.image_uri" />
             </el-form-item>
           </el-col>
@@ -178,9 +175,9 @@ export default {
     }
   },
   computed: {
-    contentShortLength() {
+    /* contentShortLength() {
       return this.postForm.content_short.length
-    },
+    },*/
     displayTime: {
       // set and get is useful when the data
       // returned by the back end api is different from the front end
@@ -287,7 +284,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/styles/mixin.scss";
+/*@import "~@/styles/mixin.scss";
 
 .createPost-container {
   position: relative;
@@ -295,7 +292,7 @@ export default {
   .createPost-main-container {
     padding: 40px 45px 20px 50px;
 
-    .postInfo-container {
+    !*.postInfo-container {
       position: relative;
       @include clearfix;
       margin-bottom: 10px;
@@ -303,7 +300,7 @@ export default {
       .postInfo-container-item {
         float: left;
       }
-    }
+    }*!
   }
 
   .word-counter {
@@ -312,9 +309,9 @@ export default {
     right: 10px;
     top: 0px;
   }
-}
+}*/
 
-.article-textarea /deep/ {
+/*.article-textarea /deep/ {
   textarea {
     padding-right: 40px;
     resize: none;
@@ -322,5 +319,5 @@ export default {
     border-radius: 0px;
     border-bottom: 1px solid #bfcbd9;
   }
-}
+}*/
 </style>
